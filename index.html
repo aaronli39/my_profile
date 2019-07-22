@@ -11,48 +11,52 @@
     <!--^this tells the HTML that there is a sheet about fAsHiOn (written in css) and located in the file style.css-->
     <link href="https://fonts.googleapis.com/css?family=Geostar+Fill&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro&display=swap" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!--fun challenge - try fonts.google.com and see if you can add fun fonts to your page.-->
 </head>
 
 <body>
     <!--the body holds content you want to appear on your webpage.-->
     <!--we structure a lot of things in divs - -->
-    <!--they are like boxes we will later be able to pick up and move around, -->
     <!--or style differently based on their functions.-->
+    <!--they are like boxes we will later be able to pick up and move around, -->
     <div id="container">
         <!--^this div contains all other divs!-->
-
-        <div id="title">
-            <center>
+        <div class="disp">
+            <div id="title">
                 <h1 class="pointer">A a r o n &nbsp;&nbsp; L i</h1>
-            </center>
-            <!--h1 is a head tag that makes things BIG. experiment with h1 - h6.-->
+                <!--h1 is a head tag that makes things BIG. experiment with h1 - h6.-->
+            </div>
+            <div id="time">
+                <h1 id="clock"></h1>
+            </div>
         </div>
 
         <div class="disp">
             <div id="bio" class="border">
-                <p>Sugar addict. Video game enthusiast. Coder.</p>
+                <p class="titles">About me</p>
+                <p class="faded">Sugar addict. Video game enthusiast. Coder.</p>
                 <br>
-                <p><strong>BTW</strong> Pandas are my spirit animal</p>
+                <p class="faded"><strong>BTW:</strong> <a href="https://en.wikipedia.org/wiki/Giant_panda" target="blank" class="decor">Pandas</a> are my spirit animal</p>
             </div>
             <div id="foods" class="border">
-                <p style="padding-left: 5px;">Favorite foods</p>
+                <p style="padding-left: 5px;" class="titles">Favorite foods</p>
                 <ul>
-                    <li>not apples, plums, peaches, kiwi</li>
-                    <li>not vegetables except brocoli, spinnach</li>
-                    <li>ALL MEATS</li>
+                    <li class="faded">not apples, plums, peaches, kiwi</li>
+                    <li class="faded">not vegetables except brocoli, spinnach</li>
+                    <li class="faded">ALL MEATS</li>
                 </ul>
             </div>
         </div>
 
         <br>
         <div id="specialSkills" class="border">
-            <p>Check out my COoL SkiLls:</p>
+            <p class="titles">Check out my COoL SkiLls:</p>
             <ul>
-                <li>can do up to 6 cartwheels in a row without stopping</li>
-                <li>can sit in a chair in front of a computer for over 12 hours a day</li>
-                <li>Going to nationals in Minnesota for <a href="https://en.wikipedia.org/wiki/Ultimate_(sport)" class="decor">Ultimate</a></li>
+                <li class="faded">can do up to 6 cartwheels in a row without stopping</li>
+                <li class="faded">can sit in a chair in front of a computer for over 12 hours a day</li>
+                <li class="faded">Going to nationals in Minnesota for <a
+                        href="https://en.wikipedia.org/wiki/Ultimate_(sport)" target="blank" class="decor">Ultimate</a></li>
             </ul>
         </div>
 
@@ -62,6 +66,68 @@
         </div>
     </div>
 
+    <script>
+
+        var wakeuptime = 7;
+        var noon = 12;
+        var lunchtime = 12;
+        var naptime = lunchtime + 2;
+        var partytime;
+        var evening = 18;
+
+        // Getting it to show the current time on the page
+        var showCurrentTime = function () {
+            // display the string on the webpage
+            var clock = document.getElementById('clock');
+
+            var currentTime = new Date();
+
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var seconds = currentTime.getSeconds();
+            var meridian = "AM";
+
+            // Set hours
+            if (hours >= 12) {
+                meridian = "PM";
+            }
+
+            if (hours > noon) {
+                hours = hours - 12;
+            }
+
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+
+            // Set Minutes
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+
+            // Set Seconds
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+
+            // put together the string that displays the time
+            var clockTime = hours + ':' + minutes + ':' + seconds + " " + meridian;
+
+            clock.innerText = clockTime;
+        };
+
+        // Getting the clock to increment on its own and change out messages and pictures
+        var updateClock = function () {
+            var time = new Date().getHours();
+            showCurrentTime();
+        };
+        updateClock();
+
+        // Getting the clock to increment once a second
+        var oneSecond = 1000;
+        setInterval(updateClock, oneSecond);
+
+    </script>
     <!--anything you put here is in the body but outside all divs!-->
 </body>
 

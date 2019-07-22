@@ -18,6 +18,24 @@ h1 {
     font-size: 45px;
 }
 
+.faded {
+    color:#cccccc;
+    /* First we need to help some browsers along for this to work.
+     Just because a vendor prefix is there, doesn't mean it will
+     work in a browser made by that vendor either, it's just for
+     future-proofing purposes I guess. */
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    /* ...and now for the proper property */
+    transition:.5s;
+}
+
+.border:hover .faded {
+    color: black;
+}
+
 .pointer {
     cursor: pointer;
 }
@@ -40,6 +58,12 @@ h1 {
     color: black;
 }
 
+.titles {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    margin-top: 0.3em;
+}
+
 #bio {
     width: 50%;
     padding-left: 5px;
@@ -52,4 +76,18 @@ h1 {
 
 #specialSkills {
     padding-left: 5px;
+}
+
+#title {
+    width: 50%;
+    text-decoration: underline;
+}
+
+#time {
+    width: 50%;
+}
+
+#clock {
+    text-align: right;
+    font-weight: 600;
 }
